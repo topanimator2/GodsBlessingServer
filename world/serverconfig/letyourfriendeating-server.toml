@@ -1,0 +1,6 @@
+#Cooldown (ms) between feeding attempts per player
+#Range: 0 ~ 60000
+feedCooldown = 600
+#Enable or disable the feed friend feature by default
+feedFriendEnabled = true
+

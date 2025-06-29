@@ -1,0 +1,24 @@
+{
+  "name": "Gods Blessing",
+  "pack": "Minecraft",
+  "vanillaInstance": true,
+  "packId": 0,
+  "externalPackId": 0,
+  "minecraftVersion": "1.20.1",
+  "version": "1.20.1",
+  "isPatchedForLog4Shell": true,
+  "loaderVersion": {
+    "version": "47.1.106",
+    "rawVersion": "1.20.1-47.1.106",
+    "recommended": false,
+    "type": "NeoForge",
+    "downloadables": {}
+  },
+  "javaVersion": {
+    "component": "java-runtime-gamma",
+    "majorVersion": 17
+  },
+  "isDev": false,
+  "mods": [],
+  "ignoredUpdates": []
+}

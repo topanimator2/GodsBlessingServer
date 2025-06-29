@@ -1,0 +1,7 @@
+#The number of ticks it takes, on average, for a Rift to spawn around a player at the time of midnight in the overworld.
+averageOverworldRiftSpawnTicks = 500
+#The number of ticks it takes, on average, for a lightning bolt to spawn around a player in the Midnight.
+averageMidnightLightningSpawnTicks = 500
+#The chance for a midnight lightning bolt to create a rift as a value between 0 and 1.
+chanceMidnightLightningCreatesRift = 0.3
+

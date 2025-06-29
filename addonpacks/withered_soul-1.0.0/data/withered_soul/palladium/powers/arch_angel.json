@@ -1,0 +1,267 @@
+{
+    "name": "arch angel",
+    "background": "minecraft:textures/block/white_concrete.png",
+    "icon": "minecraft:feather",
+    "gui_display_type": "tree",
+    "energy_bars": {
+        "Soul": {
+            "color": "#f9ec72",
+            "max": 2000,
+            "synced_value": {
+                "type": "score",
+                "objective": "undead_death",
+                "fallback": 0
+            }
+        }
+    },
+    "abilities": {
+        "shit": {
+            "type": "godsblessing:circle_effect",
+            "icon": "minecraft:textures/mob_effect/regeneration.png",
+            "title": "Heal all Particles",
+            "hidden": "true",
+            "particle": "minecraft:totem_of_undying",
+            "all_players": true,
+            "force_up": 0.2,
+            "radius": 20,
+            "list index": -2,
+            "conditions": {
+                "enabling": [
+                    {
+                        "type": "palladium:ability_enabled",
+                        "power": "withered_soul:angel",
+                        "ability": "heal_all"
+                    }
+                ]
+            }
+        },
+        "undead_death": {
+            "type": "palladium:command",
+            "icon": "minecraft:spectral_arrow",
+            "title": "Cleanse the world",
+            "description": "U still haven't killed all evil",
+            "first_tick_commands": [
+                "scoreboard objectives add undead_death dummy"
+            ],
+            "commands": [
+                "execute if score @s undead_death matches 2000.. run scoreboard players set @s undead_death 2000"
+            ]
+        },
+        "heal_all": {
+            "type": "palladium:command",
+            "icon": "minecraft:textures/mob_effect/regeneration.png",
+            "bar_color": "white",
+            "title": "Heal all",
+            "description": "heals everybody around u",
+            "list index": -1,
+            "commands": [
+                "effect give @a[distance=..15] minecraft:regeneration 25 2 true",
+                "playsound minecraft:block.bell.use ambient @a[distance=15]",
+                "playsound minecraft:block.bell.use ambient @s"
+            ],
+            "conditions": {
+                "enabling": [
+                    {
+                        "type": "palladium:action",
+                        "cooldown": 600,
+                        "key_type": "key_bind",
+                        "needs_empty_hand": false,
+                        "allow_scrolling_when_crouching": true
+                    }
+                ]
+            }
+        },
+        "never_die": {
+            "type": "palladium:command",
+            "icon": "minecraft:potion",
+            "bar_color": "red",
+            "title": "Holy beings never die/cost 30 points",
+            "description": "makes urself almost invulnerable for 10 sec",
+            "list index": -1,
+            "commands": [
+                "effect give @s minecraft:instant_health 200 2 true",
+                "playsound irons_spellbooks:cast.generic.holy ambient @a[distance=10]",
+                "playsound irons_spellbooks:cast.generic.holy ambient @s"
+            ],
+            "conditions": {
+                "enabling": [
+                    {
+                        "type": "palladium:action",
+                        "cooldown": 500,
+                        "key_type": "key_bind",
+                        "needs_empty_hand": false,
+                        "allow_scrolling_when_crouching": true
+                    },
+                    {
+                        "type": "palladium:objective_score",
+                        "objective": "undead_death",
+                        "min_score": 30,
+                        "max_score": 2147483647
+                    }
+                ]
+            }
+        },
+        "never_die_drain": {
+            "type": "palladium:command",
+            "hidden": true,
+            "commands": [
+                "scoreboard players remove @s undead_death 30"
+            ],
+            "conditions": {
+                "enabling": [
+                    {
+                        "type": "palladium:ability_enabled",
+                        "power": "null",
+                        "ability": "never_die"
+                    }
+                ]
+            }
+        },
+        "fly": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:feather",
+            "attribute": "palladium:flight_speed",
+            "amount": 1.2,
+            "title": "Angelwings",
+            "bar_color": "white",
+            "conditions": {
+                "enabling": [
+                    {
+                        "type": "palladium:toggle",
+                        "cooldown": 0,
+                        "key_type": "key_bind",
+                        "needs_empty_hand": false,
+                        "allow_scrolling_when_crouching": true
+                    }
+                ]
+            }
+        },
+        "fall_damage": {
+            "type": "palladium:damage_immunity",
+            "icon": "minecraft:feather",
+            "title": "light as a feather",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "no fall damage",
+            "damage_sources": [
+                "minecraft:is_fall"
+            ]
+        },
+        "holy_smite": {
+            "type": "godsblessing:smite",
+            "hidden": false,
+            "icon": "minecraft:iron_sword",
+            "description": "spawns a sword above the enemy that falls down after some time",
+            "title": "Holy judgement",
+            "conditions": {
+                "enabling": [
+                    {
+                        "type": "palladium:activation",
+                        "cooldown": 400,
+                        "ticks": 20,
+                        "key_type": "key_bind"
+                    }
+                ]
+            }
+        },
+        "holy_gold": {
+            "type": "palladium:command",
+            "hidden": false,
+            "icon": "gold_ingot",
+            "description": "lets u change gold to holy gold that makes u more powerfull",
+            "title": "Gold to kill",
+            "commands": [
+                "playsound minecraft:block.anvil.use ambient @s ~ ~ ~ 0.5 0.5"
+            ],
+            "conditions": {
+                "enabling": [
+                    {
+                        "type": "palladium:action",
+                        "cooldown": "20"
+                    }
+                ]
+            }
+        },
+        "holy_gold_change": {
+            "type": "godsblessing:holy_touch",
+            "icon": "minecraft:textures/mob_effect/regeneration.png",
+            "hidden": "true",
+            "list index": -2,
+            "conditions": {
+                "enabling": [
+                    {
+                        "type": "palladium:ability_enabled",
+                        "power": "withered_soul:angel",
+                        "ability": "holy_gold"
+                    }
+                ]
+            }
+        },
+
+        "holy_smite_drain":{
+            "type": "palladium:command",
+            "hidden": true,
+            "commands": [
+                "scoreboard players remove @s undead_death 1"
+                
+                
+            ],
+            
+            "conditions": {
+                "enabling": [
+                    {
+                        "type": "palladium:ability_enabled",
+                        "power": "null",
+                        "ability": "holy_smite"
+                      
+                    }
+                ]
+            }
+         },
+
+        "holy_gold_drain":{
+            "type": "palladium:command",
+            "hidden": true,
+            "commands": [
+                "scoreboard players remove @s undead_death 70"
+                
+                
+            ],
+            
+            "conditions": {
+                "enabling": [
+                    {
+                        "type": "palladium:ability_enabled",
+                        "power": "null",
+                        "ability": "holy_gold"
+                      
+                    }
+                ]
+            }
+         },
+
+        "heal_all_drain":{
+            "type": "palladium:command",
+            "hidden": true,
+            "commands": [
+                "scoreboard players remove @s undead_death 10"
+                
+                
+            ],
+            
+            "conditions": {
+                "enabling": [
+                    {
+                        "type": "palladium:ability_enabled",
+                        "power": "null",
+                        "ability": "heal_all"
+                      
+                    }
+                ]
+            }
+         }
+    }
+}
