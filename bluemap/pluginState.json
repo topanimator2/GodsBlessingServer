@@ -1,5 +1,30 @@
 {
   "render-threads-enabled": true,
-  "maps": {},
+  "maps": {
+    "new_world_undergarden_undergarden": {
+      "update-enabled": true
+    },
+    "new_world": {
+      "update-enabled": true
+    },
+    "new_world_midnight_the_midnight": {
+      "update-enabled": true
+    },
+    "new_world_flying_stuff_shrine": {
+      "update-enabled": true
+    },
+    "new_world_flying_stuff_under_ground": {
+      "update-enabled": true
+    },
+    "new_world_grave_core_space": {
+      "update-enabled": true
+    },
+    "new_world_the_nether": {
+      "update-enabled": true
+    },
+    "new_world_the_end": {
+      "update-enabled": true
+    }
+  },
   "hidden-players": []
 }
